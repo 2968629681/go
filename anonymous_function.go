@@ -31,14 +31,14 @@ func main() {
 			fmt.Println(err)
 		}
 	}()
-
+	//函数后面的小括号表示调用这个函数
 	println(sum(5, 2))
 
 	doinput(func(x, y int) int {
 		return x + y
 	}, 1, 2)
 
-	opFunc := wrap("add")
+	opFunc := wrap("addfvc ")
 	re := opFunc(2, 3)
 
 	fmt.Printf("%d\n", re)
