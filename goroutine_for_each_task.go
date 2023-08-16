@@ -44,7 +44,7 @@ func main() {
 	fmt.Println("sum=", sum)
 }
 
-// 构建task并写入task通道
+// InitTask 构建task并写入task通道
 func InitTask(taskchan chan<- task, r chan int, p int) {
 	qu := p / 10
 	mod := p % 10
@@ -70,7 +70,7 @@ func InitTask(taskchan chan<- task, r chan int, p int) {
 	close(taskchan)
 }
 
-// DistributeTask 读取taskchan，每个task启动一个worker goroutine进行处理
+// DistributeTask 读取task chan，每个task启动一个worker goroutine进行处理
 // 并等待每个task运行完，关闭结果通道
 func DistributeTask(taskchan <-chan task, wait *sync.WaitGroup, result chan int) {
 	for v := range taskchan {
